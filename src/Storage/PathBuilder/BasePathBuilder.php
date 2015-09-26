@@ -8,6 +8,7 @@ namespace Burzum\FileStorage\Storage\PathBuilder;
 
 use Cake\Core\InstanceConfigTrait;
 use Cake\Datasource\EntityInterface;
+use Burzum\FileStorage\Storage\StorageManager;
 use Burzum\FileStorage\Storage\StorageUtils;
 
 /**
