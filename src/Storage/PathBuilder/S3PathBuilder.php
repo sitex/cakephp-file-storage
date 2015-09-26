@@ -11,6 +11,9 @@ use Cake\Datasource\EntityInterface;
 
 class S3PathBuilder extends BasePathBuilder {
 
+/**
+ * @inheritdoc
+ */
 	public function __construct(array $config = []) {
 		$config += [
 			'https' => true,
@@ -36,18 +39,36 @@ class S3PathBuilder extends BasePathBuilder {
 		return '';
 	}
 
+/**
+ * Get the bucket from an S3 adapter configuration.
+ *
+ * @string $string Adapter config name.
+ * @return string
+ */
 	protected function _getBucket($adapter) {
 		$config = StorageManager::config($adapter);
 		return $config['adapterOptions'][1];
 	}
 
+/**
+ * Get the region from an S3 adapter configuration.
+ *
+ * @string $string Adapter config name.
+ * @return string
+ */
 	protected function _getRegion($adapter) {
 		$config = StorageManager::config($adapter);
 		$S3Client = $config['adapterOptions'][0];
 		return $S3Client->getRegion();
 	}
 
-	protected function _buildCloudUrl($adapter, $bucketPrefix = null, $cfDist = null) {
+/**
+ * Builds the S3 cloud URL.
+ *
+ * @string $string Adapter config name.
+ * @return string
+ */
+	protected function _buildCloudUrl($adapter) {
 		$path = $this->config('https') === true ? 'https://' : 'http://';
 		$path .= 's3-' . $this->_getRegion($adapter) . '.amazonaws.com/' . $this->_getBucket($adapter) . '/';
 		return $path;

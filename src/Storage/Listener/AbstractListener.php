@@ -114,6 +114,11 @@ abstract class AbstractListener implements EventListenerInterface {
  */
 	public function initialize($config) {}
 
+/**
+ * Implemented Events
+ *
+ * @return array
+ */
 	public function implementedEvents() {
 		return [
 			'FileStorage.path' => 'getPath'
