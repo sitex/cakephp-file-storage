@@ -7,5 +7,6 @@ App::uses('CakeEventManager', 'Event');
 
 spl_autoload_register(__NAMESPACE__ . '\FileStorageUtils::gaufretteLoader');
 
-$listener = new LocalImageProcessingListener();
+//$listener = new LocalImageProcessingListener();
+$listener = new LocalFileStorageListener();
 CakeEventManager::instance()->attach($listener);
